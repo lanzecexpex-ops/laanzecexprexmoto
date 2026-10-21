@@ -1,0 +1,111 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Postulación de transportista | LANZEC</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    .application-card { width: min(760px, 100%); margin: 32px auto; }
+    .document-field { margin: 18px 0; }
+    .document-field input { display:block; width:100%; margin-top:8px; }
+    .section-title { margin-top:28px; }
+    .application-note { padding:14px; border-radius:10px; background:rgba(128,128,128,.12); margin:18px 0; }
+  </style>
+</head>
+<body>
+  <main class="auth-main">
+    <form class="form-card application-card" id="driver-application-form">
+      <a class="hint" href="index.html">← Volver al inicio</a>
+
+      <h1 style="margin-top:22px">Postulación de transportista</h1>
+      <p>Completa tus datos y adjunta los documentos para que LANZEC revise tu solicitud.</p>
+
+      <div class="application-note">
+        <strong>Importante:</strong> los documentos serán privados. Tu solicitud quedará pendiente hasta que un administrador la revise.
+      </div>
+
+      <h3 class="section-title">1. Servicios</h3>
+      <div class="field">
+        <label for="service-types">¿Para qué servicios postulas?</label>
+        <select id="service-types" name="service_types" required>
+          <option value="ambos">Moto taxi y delivery</option>
+          <option value="moto_taxi">Solo moto taxi</option>
+          <option value="delivery">Solo delivery</option>
+        </select>
+      </div>
+
+      <h3 class="section-title">2. Datos del vehículo</h3>
+      <div class="field">
+        <label for="vehicle">Tipo, marca y modelo</label>
+        <input id="vehicle" name="vehicle" placeholder="Ej. moto lineal, marca y modelo" required>
+      </div>
+      <div class="field">
+        <label for="plate">Placa del vehículo</label>
+        <input id="plate" name="plate" placeholder="Número de placa" required>
+      </div>
+
+      <h3 class="section-title">3. Documentos obligatorios</h3>
+      <p class="hint">Formatos permitidos: JPG, PNG o PDF. Máximo 5 MB por archivo.</p>
+
+      <div class="document-field">
+        <label for="dni-front">DNI — cara delantera</label>
+        <input id="dni-front" name="dni_front" type="file"
+          accept="image/jpeg,image/png,application/pdf" required>
+      </div>
+
+      <div class="document-field">
+        <label for="dni-back">DNI — cara posterior</label>
+        <input id="dni-back" name="dni_back" type="file"
+          accept="image/jpeg,image/png,application/pdf" required>
+      </div>
+
+      <div class="document-field">
+        <label for="license">Licencia de conducir</label>
+        <input id="license" name="license" type="file"
+          accept="image/jpeg,image/png,application/pdf" required>
+      </div>
+
+      <div class="document-field">
+        <label for="vehicle-document">Tarjeta de propiedad o equivalente</label>
+        <input id="vehicle-document" name="vehicle_document" type="file"
+          accept="image/jpeg,image/png,application/pdf" required>
+      </div>
+
+      <div class="document-field">
+        <label for="profile-photo">Foto de perfil</label>
+        <input id="profile-photo" name="profile_photo" type="file"
+          accept="image/jpeg,image/png" required>
+      </div>
+
+      <label class="check-item" style="margin:20px 0">
+        <input type="checkbox" id="documents-consent" required>
+        <span>Confirmo que los documentos son auténticos y autorizo su revisión para evaluar mi postulación.</span>
+      </label>
+
+      <button class="btn btn-primary full" type="submit">
+        Enviar postulación →
+      </button>
+
+      <div id="application-message" data-form-message aria-live="polite"></div>
+    </form>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/supabase-config.js"></script>
+  <script>
+    const form = document.getElementById("driver-application-form");
+    const message = document.getElementById("application-message");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      message.textContent =
+        "El formulario está preparado visualmente, pero todavía falta conectar y verificar el envío seguro. No se ha enviado ningún documento.";
+
+      message.style.color = "#b45309";
+    });
+  </script>
+</body>
+</html>
