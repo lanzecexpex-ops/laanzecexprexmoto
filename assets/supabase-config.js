@@ -4,10 +4,11 @@
   La clave aquí debe ser la clave pública publishable/anon.
   NUNCA coloques la service_role key en el navegador.
 */
-window.LANZEC_SUPABASE_CONFIG = {
-  url: "PEGA_AQUI_LA_URL_DEL_PROYECTO",
-  publishableKey: "PEGA_AQUI_LA_CLAVE_PUBLICA",
-  configured: false
+const SUPABASE_URL =
+  "https://ikkbkaugumkelarnwacl.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_8iHAbjZczhE7jcBus4yqgQ_rUsCqMlN";
 };
 
 // La integración real se activa en la siguiente etapa, después de preparar
